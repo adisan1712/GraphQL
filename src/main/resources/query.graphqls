@@ -1,0 +1,33 @@
+scalar Long
+
+type Query{
+    firstQuery:String
+    secondQuery:String
+    getFullName(srn : SampleRequestNames) : String
+    student(id : Long) : StudentResponse
+}
+
+input SampleRequestNames{
+    firstName:String!
+    lastName:String
+}
+type StudentResponse{
+    id: Long
+    firstName: String
+    lastName: String
+    email :String
+    street :String
+    city : String
+    learningSubjects(subjectNameFilter : SubjectNameFilter):[Subject]
+    fullName: String
+}
+
+type Subject{
+    id: Long
+    subjectName: String
+    marksObtained : String
+}
+
+enum SubjectNameFilter{
+    All,Java,MySQL,MongoDB
+}
